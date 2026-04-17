@@ -247,12 +247,13 @@ export class BenchmarkLoop {
 
   _getCameraRotMatrix() {
     const pos = this._getCameraPos();
-    const target = [0, 0, 0];
-    const up = [0, 1, 0];
 
-    // Look-at matrix (3x3 rotation only)
-    const f = normalize3(sub3(target, pos));
-    const r = normalize3(cross3(f, up));
+    // Forward vector: from camera toward origin
+    const f = normalize3(sub3([0, 0, 0], pos));
+
+    // Choose a stable world-up that avoids gimbal lock near poles.
+    const worldUp = Math.abs(f[1]) > 0.99 ? [0, 0, 1] : [0, 1, 0];
+    const r = normalize3(cross3(f, worldUp));
     const u = cross3(r, f);
 
     // Column-major for WebGL
