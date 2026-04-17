@@ -105,7 +105,8 @@ vec4 evaluateJets(vec3 p, float rs) {
 // Returns vec4(rgb_color, stress_accumulator)
 vec4 traceGeodesic(vec2 uv, float rs) {
     vec3 pos = u_cameraPos;
-    vec3 vel = normalize(u_cameraRot * vec3(uv, -1.0)); // Adjusted FoV multiplier
+    // FoV scale: smaller = narrower/more zoomed, larger = wider. 0.7 gives a natural perspective.
+    vec3 vel = normalize(u_cameraRot * vec3(uv, -0.7));
     
     float accumulator = 0.0;
     vec3 color = vec3(0.0);
@@ -192,8 +193,10 @@ void main() {
     vec2 p = (gl_FragCoord.xy - 0.5 * u_resolution) / min(u_resolution.x, u_resolution.y);
     
     if (u_isIdle) {
-        // Flat background for absolute zero stress IDLE
-        vec2 bgUV = gl_FragCoord.xy / u_resolution.xy;
+        // In IDLE, cast a ray from the camera through the rotation matrix to sample the background.
+        // This makes the background respond to camera orbit (dragging/scrolling).
+        vec3 idleRay = normalize(u_cameraRot * vec3(p, -0.7));
+        vec2 bgUV = vec2(atan(idleRay.z, idleRay.x) / (2.0 * PI) + 0.5, asin(clamp(idleRay.y, -1.0, 1.0)) / PI + 0.5);
         fragColor = vec4(texture(u_bgTex, bgUV).rgb * 0.3, 1.0);
         return;
     }
