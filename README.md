@@ -2,6 +2,8 @@
 
 > **WebGL 2.0 기반의 초고해상도 물리 렌더링 GPU 스트레스 테스트 도구**
 
+<img width="100%" alt="image" src="https://i.imgur.com/2Gy8AaL.jpeg" />
+
 ## 1. 소개 (Introduction)
 
 이 프로젝트는 웹 브라우저 환경에서 동작하는 고성능 GPU 벤치마크 및 시각화 시뮬레이터입니다.
