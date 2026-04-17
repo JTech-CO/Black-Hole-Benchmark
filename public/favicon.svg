@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- 강착 원반의 은은한 광탄 효과 -->
+    <radialGradient id="diskGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#FFB347" stop-opacity="1" />
+      <stop offset="85%" stop-color="#FF4500" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <!-- 아인슈타인 링 효과 -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 배경 광광 효과 -->
+  <circle cx="50%" cy="50%" r="45" fill="url(#diskGradient)" opacity="0.8" />
+  
+  <!-- 강착 원반 (약간 비대칭적인 고리 형태) -->
+  <ellipse cx="50" cy="50" rx="40" ry="12" fill="none" stroke="#FFD700" stroke-width="3" filter="url(#glow)" transform="rotate(-15 50 50)" />
+  <ellipse cx="50" cy="50" rx="38" ry="10" fill="none" stroke="#FFA500" stroke-width="1.5" opacity="0.7" transform="rotate(-15 50 50)" />
+  
+  <!-- 사건의 지평선 (중앙의 검은 구체) -->
+  <circle cx="50" cy="50" r="22" fill="#000000" stroke="#FFFFFF" stroke-width="0.5" opacity="0.9" />
+</svg>

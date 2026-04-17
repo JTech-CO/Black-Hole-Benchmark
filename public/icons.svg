@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="diskGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#FFB347" stop-opacity="1" />
+      <stop offset="85%" stop-color="#FF4500" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="50%" cy="50%" r="45" fill="url(#diskGradient)" opacity="0.8" />
+  <ellipse cx="50" cy="50" rx="40" ry="12" fill="none" stroke="#FFD700" stroke-width="3" filter="url(#glow)" transform="rotate(-15 50 50)" />
+  <circle cx="50" cy="50" r="22" fill="#000000" />
+</svg>

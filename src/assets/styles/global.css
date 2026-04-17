@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* ─── Global Reset & Base ─── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #111111;
+  color: #E2E8F0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Monospace Numeric Data ─── */
+.font-mono-data {
+  font-family: 'Courier New', 'Fira Code', 'Consolas', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0px;
+}
+
+/* ─── Analytical Text Colors ─── */
+.text-glow-cyan {
+  color: #38BDF8;
+}
+
+.text-glow-score {
+  color: #F8FAFC;
+  font-weight: bold;
+}
+
+.text-glow-pink {
+  color: #F43F5E;
+}
+
+/* ─── Solid Analytical Panel ─── */
+.glass-panel {
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel-strong {
+  background: #0F172A;
+  border: 1px solid #475569;
+  border-radius: 4px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
+}
+
+/* ─── Command Button (Replaces Neon Button) ─── */
+.neon-btn {
+  position: relative;
+  padding: 10px 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #F8FAFC;
+  background: #334155;
+  border: 1px solid #475569;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  overflow: hidden;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.neon-btn:hover {
+  background: #475569;
+  border-color: #64748B;
+}
+
+.neon-btn:active {
+  background: #1E293B;
+  border-color: #38BDF8;
+  color: #38BDF8;
+}
+
+.neon-btn--danger {
+  color: #F8FAFC;
+  background: #9F1239;
+  border-color: #BE123C;
+}
+
+.neon-btn--danger:hover {
+  background: #BE123C;
+  border-color: #E11D48;
+}
+
+.neon-btn--small {
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+.neon-btn--filled {
+  background: #0284C7;
+  color: #FFF;
+  border-color: #0369A1;
+}
+
+/* ─── Progress Bar ─── */
+.progress-bar-track {
+  width: 100%;
+  height: 4px;
+  background: #334155;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #38BDF8;
+  border-radius: 0;
+  transition: width 0.3s ease;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 0;
+}
+
+/* ─── Custom Animations ─── */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.3s ease-out forwards;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .neon-btn {
+    padding: 10px 20px;
+    font-size: 0.875rem;
+  }
+}
